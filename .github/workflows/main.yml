@@ -6,7 +6,8 @@ name: My-blog
 # events but only for the master branch
 on:
   push:
-    branches: [ main ]
+    branches:
+     - main
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -36,7 +37,7 @@ jobs:
       - uses: actions/download-artifact@v1
         with:
           name: public-folder
-      - uses: jakejarvis/s3-sync-action@main
+      - uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
         env:
